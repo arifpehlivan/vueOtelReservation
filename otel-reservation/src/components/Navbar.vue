@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import {db} from '@/firebase';
+// import {db} from '@/firebase';
 import Swal from 'sweetalert2'
 export default {
   data(){
@@ -81,10 +81,33 @@ export default {
                 });
               })
               .catch(()=>{
-                console.log('Error')
+                console.log('Error - Reservation Canceled')
               });
               break;
-          
+          case 'Contact':
+            db.collection("messages")
+                .add({message: this.from.message, email:this.form.email})
+                .then(()=>{
+                    this.$bvModal.hide("my-modal2");
+                    swal.fire({
+                      icon: 'success',
+                      title: 'Message Sent'
+                    });
+                })
+                .catch(()=>{
+                  console.log('Error - Messages')
+                })
+                break;
+          case 'Administrator':
+            if(this.admin.user == this.admininput.user && this.admin.pass == this.admininput.pass){
+              this.$router.push('/admin')
+            } else {
+              Swal.fire({
+                icon: 'error',
+                title: 'Incorrect'
+              })
+            }
+
       }
     }
   },
