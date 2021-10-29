@@ -107,10 +107,62 @@ export default {
                 title: 'Incorrect'
               })
             }
+            break;
+          default:
+            db.collection(this.form.room)
+              .doc(this.form.reservationid)
+              .get()
+              .then(doc => {
+                if (doc.exists) {
+                  db.collection('clients')
+                    .doc(doc.data().cllientID)
+                    .get()
+                    .then(doc2 =>{
+                        this.showinfo(doc,doc2)
+                    })
+                } else {
+                    console.log('error')
+                }
+              })
+              .catch(()=>{
+                console.log('error')
+              })
+          break;
+
 
       }
+    },
+    modaldata2(title,color){
+      this.$bvModal.show("my-modal2");
+      this.color = color;
+      this.title = title;
+
+      this.form.reservationid = "";
+      this.form.room = null;
+      this.form.message = "";
+      this.form.email = "";
+      
+      this.reservation.id = "";
+      this.reservation.name = "";
+      this.reservation.email = "";
+      this.reservation.day = "";
+      this.reservation.price = "";
+
+      this.admininput.user = "";
+      this.admininput.pass = "";
+      this.show = false;
+
+    },
+    showinfo(doc,doc2){
+      this.show = true;
+
+      this.reservation.id = doc.id;
+      this.reservation.name = doc2.data().name;
+      this.reservation.email = doc2.data().email;
+      this.reservation.day = doc.data().day;
+      this.reservation.price = doc.data().price;
     }
-  },
+  }
 }
 </script>
 
