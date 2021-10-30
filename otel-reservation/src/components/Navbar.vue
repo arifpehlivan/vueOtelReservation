@@ -25,7 +25,7 @@
                 size="sm"
                 class="my-2 mr-2 my-sm-0"
               >
-               <i class="fas fa-door-close"></i> Cancel Reservation
+               <i class="fas fa-door-closed"></i> Cancel Reservation
               </b-button>
 
               <b-button  
