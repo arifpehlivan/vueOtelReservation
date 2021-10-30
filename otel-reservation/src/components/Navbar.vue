@@ -5,22 +5,49 @@
               <i class="fas fa-hotel"></i>Otel App
           </b-navbar-brand>
       </b-navbar>
-      <b-navbar-toggle id="nav-collapse">
-          
-      </b-navbar-toggle>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
       <b-collapse id="nav-collapse" is-nav>
         
           <b-navbar-nav class="ml-auto">
             <b-nav-form>
-              <b-button>
-                
+
+              <b-button  
+              @click="modaldata2('Check Reservation','success')"
+              size="sm"
+              class="my-2 mr-2 my-sm-0"
+              >
+               <i class="fas fa-door-open"></i> Check Reservation
               </b-button>
+
+              <b-button  
+              @click="modaldata2('Cancel Reservation','danger')"
+              size="sm"
+              class="my-2 mr-2 my-sm-0"
+              >
+               <i class="fas fa-door-close"></i> Cancel Reservation
+              </b-button>
+
+              <b-button  
+              @click="modaldata2('Contact','primary')"
+              size="sm"
+              class="my-2 mr-2 my-sm-0"
+              >
+               <i class="fas fa-phone"></i> Contact
+              </b-button>
+
+              <b-button  
+              @click="modaldata2('Administrator','dark')"
+              size="sm"
+              class="my-2 mr-2 my-sm-0"
+              >
+               <i class="fas fa-user"></i> Administrator
+              </b-button>
+
+
             </b-nav-form>
-
           </b-navbar-nav>
-
-        
-
       </b-collapse>
   </div>
 </template>
