@@ -4,9 +4,8 @@
           <b-navbar-brand href="#">
               <i class="fas fa-hotel"></i>Otel App
           </b-navbar-brand>
-      </b-navbar>
 
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         
@@ -14,41 +13,156 @@
             <b-nav-form>
 
               <b-button  
-              @click="modaldata2('Check Reservation','success')"
-              size="sm"
-              class="my-2 mr-2 my-sm-0"
+                @click="modaldata2('Check Reservation','success')"
+                size="sm"
+                class="my-2 mr-2 my-sm-0"
               >
                <i class="fas fa-door-open"></i> Check Reservation
               </b-button>
 
               <b-button  
-              @click="modaldata2('Cancel Reservation','danger')"
-              size="sm"
-              class="my-2 mr-2 my-sm-0"
+                @click="modaldata2('Cancel Reservation','danger')"
+                size="sm"
+                class="my-2 mr-2 my-sm-0"
               >
                <i class="fas fa-door-close"></i> Cancel Reservation
               </b-button>
 
               <b-button  
-              @click="modaldata2('Contact','primary')"
-              size="sm"
-              class="my-2 mr-2 my-sm-0"
+                @click="modaldata2('Contact','primary')"
+                size="sm"
+                class="my-2 mr-2 my-sm-0"
               >
                <i class="fas fa-phone"></i> Contact
               </b-button>
 
               <b-button  
-              @click="modaldata2('Administrator','dark')"
-              size="sm"
-              class="my-2 mr-2 my-sm-0"
+                @click="modaldata2('Administrator','dark')"
+                size="sm"
+                class="my-2 mr-2 my-sm-0"
               >
                <i class="fas fa-user"></i> Administrator
               </b-button>
-
-
             </b-nav-form>
           </b-navbar-nav>
       </b-collapse>
+
+      <b-modal hide-footer id="my-modal2" :title="title">
+        <b-form @submit="onSubmit2">
+          <b-form-group
+            v-if="color !='primary' && color !='dark'"
+            id="input-group-1"
+            label="Reservation ID:"
+            label-for="input-1"
+          >
+
+            <b-form-input
+              v-if="color !='primary' && color !='dark'"
+              id="input-group-1"
+              v-model="form.reservationid"
+              type="text"
+              required
+              placeholder="Enter Reservation ID">
+            </b-form-input>
+          </b-form-group>
+
+          <b-form-group
+            v-if="color !='primary' && color !='dark'"
+            id="input-group-3"
+            label="Room:"
+            label-for="input-3"
+          >
+
+            <b-form-select id="input-3" v-model="form.room" :options="rooms" required></b-form-select>
+          </b-form-group>
+
+          <b-form-group
+              v-if="color =='primary' "
+              id="input-group-1"
+              label="E-mail:"
+              label-for="input-1"
+              >
+
+              <b-form-input
+              v-if="color !='primary' "
+              id="input-1"
+              v-model="form.email"
+              type="email"
+              required
+              placeholder="Enter E-mail">
+              </b-form-input>
+          </b-form-group>
+
+          <b-form-group
+              v-if="color =='primary' "
+              id="input-group-1"
+              label="Contact:"
+              label-for="input-1"
+              >
+
+              <b-form-textarea
+                id="textarea"
+                v-model="form.message"
+                placeholder="Enter Message..."
+                rows="3"
+                max-rows="6"
+                >
+              </b-form-textarea>
+          </b-form-group>
+
+          <b-form-group
+              v-if="color =='dark' "
+              id="input-group-1"
+              label="User:"
+              label-for="input-1"
+              >
+
+              <b-form-input
+                v-if="color == 'dark'"
+                id="input-1"
+                v-model="admininput.user"
+                type="text"
+                required
+                placeholder="Enter User"
+                >
+              </b-form-input>
+          </b-form-group>
+
+          <b-form-group
+              v-if="color =='dark' "
+              id="input-group-1"
+              label="Password:"
+              label-for="input-1"
+              >
+
+              <b-form-input
+                id="input-1"
+                v-model="admininput.pass"
+                type="password"
+                required
+                placeholder="Enter Password"
+                >
+              </b-form-input>
+          </b-form-group>
+
+          <b-button class="text-white" block type="submit" :variant="color">{{title}}</b-button>
+            
+        </b-form>
+
+        <b-card v-if="show && color=='success'" title="Reservation" class="mb-2 mt-4">
+          <b-card-text>
+            <h6>Reservation id: {{resrvation.id}}</h6>
+            <h6>Name : {{resrvation.name}}</h6>
+            <h6>E-mail : {{resrvation.email}}</h6>
+            <h6>Day : {{resrvation.day}}</h6>
+            <h6>Price : {{resrvation.price}}</h6>
+          </b-card-text>
+        </b-card>
+      </b-modal>
+      
+      </b-navbar>
+
+      
   </div>
 </template>
 
