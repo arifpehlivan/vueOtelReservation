@@ -152,10 +152,10 @@
         <b-card v-if="show && color=='success'" title="Reservation" class="mb-2 mt-4">
           <b-card-text>
             <h6>Reservation id: {{resrvation.id}}</h6>
-            <h6>Name : {{resrvation.name}}</h6>
-            <h6>E-mail : {{resrvation.email}}</h6>
-            <h6>Day : {{resrvation.day}}</h6>
-            <h6>Price : {{resrvation.price}}</h6>
+            <h6>Name : {{reservation.name}}</h6>
+            <h6>E-mail : {{reservation.email}}</h6>
+            <h6>Day : {{reservation.day}}</h6>
+            <h6>Price : {{reservation.price}}</h6>
           </b-card-text>
         </b-card>
       </b-modal>

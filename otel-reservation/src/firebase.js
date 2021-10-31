@@ -1,4 +1,5 @@
 import firebase from 'firebase/app'
+import { initializeApp } from "firebase/app";
 
 require("firebase/auth");
 require("firebase/firestore");
@@ -9,7 +10,6 @@ require("firebase/functions");
 
 
 
-  
   const firebaseConfig = {
     apiKey: "AIzaSyDpAY26WXNhVUrgtqjtvj5R71qhp3p0Mq4",
     authDomain: "test-93424.firebaseapp.com",
@@ -25,7 +25,7 @@ require("firebase/functions");
 const app = initializeApp(firebaseConfig);
   
 const auth = firebase.auth()
-const db = firebase.firestore
+const db = firebase.firestore()
 const storage = firebase.storage()
 const functions = firebase.functions()
 
