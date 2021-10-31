@@ -167,8 +167,8 @@
 </template>
 
 <script>
-// import {db} from '@/firebase';
-import Swal from 'sweetalert2'
+import {db} from '@/firebase';
+import Swal from 'sweetalert2';
 export default {
   data(){
     return {
